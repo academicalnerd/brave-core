@@ -189,11 +189,12 @@ declare namespace NewTab {
   }
 
   type CryptoDotComFetchStatus = 'completed' | 'refreshing' | 'pending'
-  
+
   export interface CryptoDotComWidgetState {
     optInTotal: boolean
     optInBTCPrice: boolean
     optInMarkets: boolean
+    isConnected: boolean
     fetchStatus: CryptoDotComFetchStatus | null
     tickerPrices: Record<string, any>
     losersGainers: Record<string, any>
@@ -201,6 +202,8 @@ declare namespace NewTab {
     tradingPairs: Array<Record<string, any>>
     newsEvents: Array<Record<string, any>>
     charts: Record<string, any>
+    accountBalances: Record<string, any>
+    depositAddresses: Record<string, any>
   }
 
   export type BinanceTLD = 'us' | 'com'
