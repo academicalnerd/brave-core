@@ -103,6 +103,7 @@ void CreativeAdNotifications::GetForSegments(
       "ca.conversion, "
       "ca.per_day, "
       "ca.total_max, "
+      "ca.split_test_group, "
       "s.segment, "
       "gt.geo_target, "
       "ca.target_url, "
@@ -151,6 +152,7 @@ void CreativeAdNotifications::GetForSegments(
       DBCommand::RecordBindingType::BOOL_TYPE,    // conversion
       DBCommand::RecordBindingType::INT_TYPE,     // per_day
       DBCommand::RecordBindingType::INT_TYPE,     // total_max
+      DBCommand::RecordBindingType::STRING_TYPE,  // split_test_group
       DBCommand::RecordBindingType::STRING_TYPE,  // segment
       DBCommand::RecordBindingType::STRING_TYPE,  // geo_target
       DBCommand::RecordBindingType::STRING_TYPE,  // target_url
@@ -186,6 +188,7 @@ void CreativeAdNotifications::GetAll(
       "ca.conversion, "
       "ca.per_day, "
       "ca.total_max, "
+      "ca.split_test_group, "
       "s.segment, "
       "gt.geo_target, "
       "ca.target_url, "
@@ -226,6 +229,7 @@ void CreativeAdNotifications::GetAll(
       DBCommand::RecordBindingType::BOOL_TYPE,    // conversion
       DBCommand::RecordBindingType::INT_TYPE,     // per_day
       DBCommand::RecordBindingType::INT_TYPE,     // total_max
+      DBCommand::RecordBindingType::STRING_TYPE,  // split_test_group
       DBCommand::RecordBindingType::STRING_TYPE,  // segment
       DBCommand::RecordBindingType::STRING_TYPE,  // geo_target
       DBCommand::RecordBindingType::STRING_TYPE,  // target_url
@@ -393,17 +397,18 @@ CreativeAdNotificationInfo CreativeAdNotifications::GetFromRecord(
   creative_ad_notification.conversion = ColumnBool(record, 8);
   creative_ad_notification.per_day = ColumnInt(record, 9);
   creative_ad_notification.total_max = ColumnInt(record, 10);
-  creative_ad_notification.segment = ColumnString(record, 11);
-  creative_ad_notification.geo_targets.push_back(ColumnString(record, 12));
-  creative_ad_notification.target_url = ColumnString(record, 13);
-  creative_ad_notification.title = ColumnString(record, 14);
-  creative_ad_notification.body = ColumnString(record, 15);
-  creative_ad_notification.ptr = ColumnDouble(record, 16);
+  creative_ad_notification.split_test_group = ColumnString(record, 11);
+  creative_ad_notification.segment = ColumnString(record, 12);
+  creative_ad_notification.geo_targets.push_back(ColumnString(record, 13));
+  creative_ad_notification.target_url = ColumnString(record, 14);
+  creative_ad_notification.title = ColumnString(record, 15);
+  creative_ad_notification.body = ColumnString(record, 16);
+  creative_ad_notification.ptr = ColumnDouble(record, 17);
 
   CreativeDaypartInfo daypart;
-  daypart.dow = ColumnString(record, 17);
-  daypart.start_minute = ColumnInt(record, 18);
-  daypart.end_minute = ColumnInt(record, 19);
+  daypart.dow = ColumnString(record, 18);
+  daypart.start_minute = ColumnInt(record, 19);
+  daypart.end_minute = ColumnInt(record, 20);
   creative_ad_notification.dayparts.push_back(daypart);
 
   return creative_ad_notification;
