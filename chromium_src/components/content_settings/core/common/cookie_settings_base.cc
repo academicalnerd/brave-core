@@ -31,6 +31,7 @@ constexpr char kGoogleusercontent[] = "https://[*.]googleusercontent.com/*";
 constexpr char kFacebook[] = "https://[*.]facebook.com/*";
 constexpr char kInstagram[] = "https://[*.]instagram.com/*";
 
+
 bool BraveIsAllowedThirdParty(const GURL& url,
                               const GURL& first_party_url,
                               const CookieSettingsBase* const cookie_settings) {
